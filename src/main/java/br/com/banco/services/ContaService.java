@@ -19,7 +19,6 @@ public class ContaService {
     @Autowired
     private ContaRepository contaRepository;
 
-
     public List<ContaDTO> buscarTodas() {
 
         List<Conta> contaList = contaRepository.findAll();
