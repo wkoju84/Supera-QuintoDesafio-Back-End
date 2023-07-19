@@ -22,5 +22,7 @@ public class Conta implements Serializable {
 
     private String nomeResponsavel;
 
+    private Transferencia transferencia;
+
 
 }

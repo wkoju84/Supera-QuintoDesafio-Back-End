@@ -4,10 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Locale;
 
 @Entity
 @Getter
@@ -23,18 +27,21 @@ public class Transferencia implements Serializable {
    @GeneratedValue(strategy = GenerationType.AUTO)
    private Long id;
 
-   @Temporal(TemporalType.TIMESTAMP)
    @Column
-   private Date data_transferencia;
+   private LocalDate data_transferencia;
 
    @Column
-   private double valor;
+   private BigDecimal valor;
 
    @Column
    private String tipo;
 
    @Column(nullable = false)
    private String nome_operador_transacao;
+
+   private BigDecimal saldoTotal = new BigDecimal(2);
+
+   private BigDecimal saldoTotalPeriodo = new BigDecimal(3);
 
    @ManyToOne
    private Conta conta;

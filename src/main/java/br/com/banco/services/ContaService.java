@@ -19,6 +19,9 @@ public class ContaService {
     @Autowired
     private ContaRepository contaRepository;
 
+    @Autowired
+    private TransferenciaService transferenciaService;
+
     public List<ContaDTO> buscarTodas() {
 
         List<Conta> contaList = contaRepository.findAll();
@@ -37,6 +40,7 @@ public class ContaService {
         Conta entidade = new Conta();
         entidade.setIdConta(contaDTO.getIdConta());
         entidade.setNomeResponsavel(contaDTO.getNomeResponsavel());
+        entidade.setTransferencia(contaDTO.getTransferencia());
         entidade = contaRepository.save(entidade);
         return new ContaDTO(entidade);
     }
@@ -46,6 +50,7 @@ public class ContaService {
         Conta entidade = contaRepository.getById(id);
         entidade.setIdConta(contaDTO.getIdConta());
         entidade.setNomeResponsavel(contaDTO.getNomeResponsavel());
+        entidade.setTransferencia(contaDTO.getTransferencia());
         entidade = contaRepository.save(entidade);
         return new ContaDTO(entidade);
     }

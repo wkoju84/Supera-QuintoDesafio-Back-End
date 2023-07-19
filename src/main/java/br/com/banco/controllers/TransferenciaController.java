@@ -19,6 +19,7 @@ public class TransferenciaController {
     @Autowired
     TransferenciaService transferenciaService;
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping
     public ResponseEntity<List<TransferenciaDTO>> buscarTodasAsTransferencias(){
         List<TransferenciaDTO> transferenciaDTOList = transferenciaService.buscarTodas();
@@ -51,4 +52,6 @@ public class TransferenciaController {
         transferenciaService.excluir(id);
         return ResponseEntity.noContent().build();
     }
+    
 }
+
